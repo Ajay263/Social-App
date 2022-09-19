@@ -20,11 +20,11 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('account/',include('account.urls')),
-    path('', include('django.contrib.auth.urls')),
-     path('images/', include('images.urls', namespace='images')),
-   
-
+    path('cart/', include('cart.urls', namespace='cart')),
+    path('orders/', include('orders.urls', namespace='orders')),
+    path('payment/', include('payment.urls', namespace='payment')),
+    path('', include('shop.urls', namespace='shop')),
+    
     
 ]
 if settings.DEBUG:

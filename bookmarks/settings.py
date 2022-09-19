@@ -32,14 +32,20 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
- 'images.apps.ImagesConfig',
-    'account.apps.AccountConfig',
+    
+     'shop.apps.ShopConfig',
+     'cart.apps.CartConfig',
+     'orders.apps.OrdersConfig',
+     'payment.apps.PaymentConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'django_extensions',
+    
+
 
 
 ]
@@ -59,7 +65,7 @@ ROOT_URLCONF = 'bookmarks.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'account/templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +73,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
+
             ],
         },
     },
@@ -134,10 +142,22 @@ STATICFILES_DIRS = [BASE_DIR / 'account/static/', ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Authentication
-LOGIN_REDIRECT_URL = 'dashboard'
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
+CART_SESSION_ID = 'cart'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+
+# Email server configuration
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'junioralexio607@gmail.com.com'
+EMAIL_HOST_PASSWORD = 'xzhutmpshlljapdh'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True   
+
+# 'uuxnlrxnthdiswoi'
+
+
+# Stripe settings
+STRIPE_PUBLISHABLE_KEY ='pk_test_51Ljl0CCtuWZn1W9YDIiAIM5R5aSFFFqcolf1WXFu2JKTxupjBIWlS9T4KAYZIC7qv5NOnpQEBP1WHU7JWKnV8vgo00Aq4SIK1y' # Publishable key
+STRIPE_SECRET_KEY ='sk_test_51Ljl0CCtuWZn1W9YWK0hDRpTaHtTSqZEusWzLkbisUdzP6qToInFssfrObrsvjOXMXCfryywQdxTFwqrMHGeIDWc00AbSy5Cvc' # Secret key
+STRIPE_API_VERSION = '2022-08-01'
